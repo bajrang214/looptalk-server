@@ -5,10 +5,12 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ CORS setup for local and live frontend
+// ✅ CORS Setup (place this before any routes/middleware)
 app.use(cors({
   origin: ['http://localhost:3000', 'https://looptalk-client.vercel.app'],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
