@@ -4,7 +4,13 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// ✅ CORS setup for local and live frontend
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://looptalk-client.vercel.app'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads')); // To serve images
 
